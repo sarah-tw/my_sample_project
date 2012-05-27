@@ -95,4 +95,14 @@ describe User do
     it { should be_invalid }
   end
   
+  describe "User email with upcase" do
+    let(:up_case_email){"SICIAOJK@KLE.COM"}
+    
+    it "should be saved as down case email" do
+      @user.email=up_case_email
+      @user.save
+      @user.reload.email.should == up_case_email.downcase
+    end
+  end
+  
 end
